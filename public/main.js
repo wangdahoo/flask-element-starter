@@ -1,9 +1,20 @@
 import Vue from 'vue'
-// import ElementUI from 'element-ui'
-// import 'element-ui/lib/theme-default/index.css'
-import App from './App.vue'
+import VueRouter from 'vue-router'
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
+import Index from './components/Index.vue'
+import About from './components/About.vue'
+
+const routes = [
+  { path: '/', component: Index },
+  { path: '/about', component: About }
+]
+
+const router = new VueRouter({
+  routes
 })
+
+window.$router = router
+
+const app = new Vue({
+  router
+}).$mount('#app')

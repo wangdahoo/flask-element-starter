@@ -3472,6 +3472,10 @@ vue-popup@^0.2.14:
   dependencies:
     wind-dom "0.0.3"
 
+vue-router@^2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-2.1.1.tgz#10c31bbdcb6da92bd3e0223fa12345e73018625a"
+
 vue-style-loader@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-1.0.0.tgz#abeb7bd0f46313083741244d3079d4f14449e049"

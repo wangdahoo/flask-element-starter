@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="/element-ui/theme-default/index.css">
   </head>
   <body>
-    <div id="app"></div>
-    <script src="/vue/vue.min.js"></script>
+    <div id="app">
+      <h1>Hello App!</h1>
+      <p>
+        <router-link to="/">dashboard</router-link>
+        <router-link to="/about">about</router-link>
+      </p>
+
+      <router-view></router-view>
+    </div>
+
+    <script src="/element-ui/vue/vue.min.js"></script>
+    <script src="/element-ui/vue-router/vue-router.min.js"></script>
     <script src="/element-ui/index.js"></script>
     <script src="http://127.0.0.1:8080/dist/build.js"></script>
   </body>

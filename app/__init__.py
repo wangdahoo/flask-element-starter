@@ -28,32 +28,30 @@ class Application(Flask):
         element-ui 静态资源
         """
 
-        def _send_element_asset(filename):
-            element_folder = os.path.abspath(
+        def _send_asset(filename):
+            _folder = os.path.abspath(
                 '%s/%s' % (self.root_path, '../node_modules/element-ui/lib'))
-            return send_from_directory(
-                element_folder,
-                filename, cache_timeout=self.get_send_file_max_age(filename)
-            )
 
-        def _send_vue_asset(filename):
-            vue_folder = os.path.abspath(
-                '%s/%s' % (self.root_path, '../node_modules/vue/dist'))
+            if filename.startswith('vue/'):
+                _folder = os.path.abspath(
+                    '%s/%s' % (self.root_path, '../node_modules/vue'))
+                filename =  'dist/' + filename[3:]
+            elif filename.startswith('vue-router/'):
+                _folder = os.path.abspath(
+                    '%s/%s' % (self.root_path, '../node_modules/vue-router'))
+                filename =  'dist/' + filename[10:]
+
+            cache_timeout = self.get_send_file_max_age(filename)
             return send_from_directory(
-                vue_folder,
-                filename, cache_timeout=self.get_send_file_max_age(filename)
+                _folder,
+                filename,
+                cache_timeout=cache_timeout
             )
 
         app.add_url_rule(
             '/element-ui/<path:filename>',
             endpoint='element-ui',
-            view_func=_send_element_asset
-        )
-        
-        app.add_url_rule(
-            '/vue/<path:filename>',
-            endpoint='vue',
-            view_func=_send_vue_asset
+            view_func=_send_asset
         )
 
     def ready(self):

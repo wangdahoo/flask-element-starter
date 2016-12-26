@@ -37,7 +37,8 @@ module.exports = {
     ]
   },
   externals: {
-    vue: 'Vue',
+    'vue': 'Vue',
+    'vue-router': 'VueRouter',
     'element-ui': 'ELEMENT'
   },
   devServer: {
