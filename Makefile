@@ -3,5 +3,5 @@ default: run
 run:
 	./ne ./ve python -m scripts.web
 
-webpack:
+dev:
 	./ne npm run dev
