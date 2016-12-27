@@ -1,33 +1,16 @@
 <template>
   <div id="app">
-    <img src="/static/logo.png">
-    <h1>{{ msg }}</h1>
-    <el-button @click.native="startHacking">Let's do it</el-button>
+    <Navbar></Navbar>
+    <router-view></router-view>
   </div>
 </template>
-
 <script>
-export default {
-  data () {
-    return {
-      msg: 'Use Vue 2.0 Today!'
-    }
-  },
+  import './layout/site.css'
+  import Navbar from './layout/Navbar.vue'
 
-  methods: {
-    startHacking () {
-      this.$notify({
-        title: 'It Works',
-        message: 'We have laid the groundwork for you. Now it\'s your time to build something epic!',
-        duration: 6000
-      })
+  export default {
+    components: {
+      Navbar
     }
   }
-}
 </script>
-
-<style>
-body {
-  font-family: Helvetica, sans-serif;
-}
-</style>

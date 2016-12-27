@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Element from 'element-ui'
 
 import Index from './components/Index.vue'
 import About from './components/About.vue'
@@ -15,6 +16,9 @@ const router = new VueRouter({
 
 window.$router = router
 
-const app = new Vue({
+import App from './App.vue'
+
+new Vue({
+  render: h => h(App),
   router
 }).$mount('#app')

@@ -32,7 +32,10 @@ class Application(Flask):
             _folder = os.path.abspath(
                 '%s/%s' % (self.root_path, '../node_modules/element-ui/lib'))
 
-            if filename.startswith('vue/'):
+            if filename == 'normalize.css':
+                _folder = os.path.abspath(
+                    '%s/%s' % (self.root_path, '../node_modules/normalize.css'))
+            elif filename.startswith('vue/'):
                 _folder = os.path.abspath(
                     '%s/%s' % (self.root_path, '../node_modules/vue'))
                 filename =  'dist/' + filename[3:]
