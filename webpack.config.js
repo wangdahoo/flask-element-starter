@@ -33,17 +33,20 @@ module.exports = {
         query: {
           name: '[name].[ext]?[hash]'
         }
-      },
+      }
     ]
   },
-  externals: {
-    'vue': 'Vue',
-    'vue-router': 'VueRouter',
-    'element-ui': 'ELEMENT'
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.common.js'
+    }
   },
   devServer: {
     historyApiFallback: true,
     noInfo: true
+  },
+  performance: {
+    hints: false
   },
   devtool: '#eval-source-map'
 }
@@ -54,13 +57,17 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: 'production'
+        NODE_ENV: '"production"'
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         warnings: false
       }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
     })
   ])
 }
