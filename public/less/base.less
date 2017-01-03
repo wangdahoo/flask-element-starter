@@ -1,0 +1,107 @@
+@import "variables";
+
+* {
+  font-family: @default-font-stack;
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* font size */
+/* 主标题 */
+.f-el, .f-20 {
+  font-size: 20px;
+}
+
+/* 标题 */
+.f-l, .f-18 {
+  font-size: 18px;
+}
+
+/* 小标题 */
+.f-m, .f-16 {
+  font-size: 16px;
+}
+
+/* 正文 */
+.f-s, .f-14 {
+  font-size: 14px;
+}
+
+/* 正文(小) */
+.f-es, .f-14 {
+  font-size: 14px;
+}
+
+/* 辅助文字 */
+.f-ees, .f-12 {
+  font-size: 12px;
+}
+
+/* 页面切换 */
+
+.fade-enter-active {
+  transition: opacity .3s;
+}
+
+.fade-leave-active {
+  transition: opacity 0s;
+}
+
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+.fade-enter, .fade-enter-active {
+  z-index: 1;
+}
+
+.fade-leave, .fade-leave-active {
+  z-index: 0;
+}
+
+/* 文字颜色 */
+
+.black {
+  color: @black;
+}
+
+.light-black {
+  color: @light-black;
+}
+
+.extra-light-black {
+  color: @extra-light-black;
+}
+
+.silver {
+  color: @silver;
+}
+
+.light-silver {
+  color: @light-silver;
+}
+
+.extra-light-silver {
+  color: @extra-light-silver;
+}
+
+.gray {
+  color: @gray;
+}
+
+.light-gray {
+  color: @light-gray;
+}
+
+.extra-light-gray {
+  color: @extra-light-gray;
+}
