@@ -5,12 +5,13 @@
   "author": "157195705@qq.com",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --port 8088 --content-base ./public",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --port 8080",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "basscss": "^8.0.2",
     "element-ui": "^1.0.0",
+    "html-webpack-plugin": "^2.25.0",
     "ionicons": "^2.0.1",
     "normalize.css": "^5.0.0",
     "vue": "^2.1.8",

@@ -1,5 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './public/main.js',
@@ -52,6 +53,26 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
+  module.exports.entry = {
+    main: './public/main.js',
+    vendor: [
+      'normalize.css/normalize.css',
+      'basscss/css/basscss.css',
+      'ionicons/css/ionicons.css',
+    ],
+    theme: 'element-ui/lib/theme-default/index.css',
+    vue: 'vue',
+    'vue-router': 'vue-router',
+    'element-ui': [
+      'element-ui'
+    ]
+  }
+
+  module.exports.output = {
+    path: path.resolve(__dirname, './dist'),
+    filename: '[chunkhash].[name].js'
+  },
+
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
@@ -66,8 +87,20 @@ if (process.env.NODE_ENV === 'production') {
         warnings: false
       }
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
+    new webpack.optimize.CommonsChunkPlugin({
+      names: [
+        'vendor', 
+        'theme', 
+        'vue', 
+        'vue-router', 
+        'element-ui',
+        'manifest'
+      ]
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Flask Element Starter',
+      filename: 'index.html',
+      template: path.resolve(__dirname, './public/index.html'),
     })
   ])
 }

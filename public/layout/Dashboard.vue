@@ -10,13 +10,19 @@
           </div>
 
           <div class="user-actions">
-            <el-menu default-active="1" theme="light" mode="horizontal" @select="userActionSelect" class="user-actions-menu">
-              <el-submenu index="1">
+            <el-menu theme="light" mode="horizontal" @select="userActionSelect">
+              <el-menu-item index="1">
+                <el-badge is-dot style="line-height: 14px;">
+                  <i class="icon el-icon-message"></i>
+                </el-badge>
+              </el-menu-item>
+
+              <el-submenu index="3">
                 <template slot="title">
                   <span class="username" v-text="username"></span>
                 </template>
-                <el-menu-item index="1-1">
-                  <i class="icon ion-android-person"></i> 退出登录
+                <el-menu-item index="3-1">
+                  <i class="icon ion-android-person"></i> Logout
                 </el-menu-item>
               </el-submenu>
             </el-menu>
@@ -46,12 +52,17 @@
 
       .navbar-content {
         .flex(1);
+        padding: 15px 20px;
       }
 
       .user-actions {
         .el-menu {
           min-width: 150px;
           border-radius: 0;
+
+          .user-message {
+
+          }
         }
       }
     }
