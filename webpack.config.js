@@ -3,6 +3,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var WebpackManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: './public/main.js',
@@ -66,16 +67,15 @@ if (process.env.NODE_ENV === 'production') {
 
   // Reset entry and output
   module.exports.entry = {
-    main: './public/main.js',
-    vue: 'vue',
+    'main': './public/main.js',
+    'vue': 'vue',
     'vue-router': 'vue-router',
     'element-ui': 'element-ui'
   };
 
-  module.exports.output = {
-    path: path.resolve(__dirname, './dist'),
+  _.extend(module.exports.output, {
     filename: '[name].[chunkhash].js'
-  };
+  })
 
   // Add ExtractTextPlugin and rules for css/less
   var extractCSS = new ExtractTextPlugin('[name].[contenthash].css');
@@ -128,6 +128,9 @@ if (process.env.NODE_ENV === 'production') {
       template: path.resolve(__dirname, './public/index.html'),
     }),
     extractCSS, 
-    extractLESS
+    extractLESS,
+    new WebpackManifestPlugin({
+      fileName: 'app.json'
+    })
   ])
 }

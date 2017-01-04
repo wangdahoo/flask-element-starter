@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # app.debug
-DEBUG = True
+DEBUG = False
 
 # API & JSON
 JSON_AS_ASCII = False

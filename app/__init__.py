@@ -16,6 +16,7 @@ class Application(Flask):
         self.config.from_object(default_settings)
 
         import os
+        # 生产环境配置
         if 'APP_CONFIG' in os.environ:
             self.config.from_envvar('APP_CONFIG', silent=True)
         else:
@@ -23,27 +24,14 @@ class Application(Flask):
                 os.path.basename(__file__), '../dev.cfg'))
             self.config.from_pyfile(dev_cfg, silent=True)
 
-    def prepare_element_assets(self):
+    def prepare_dist(self):
         """
-        element-ui 静态资源
+        webpack 打包后的静态资源
         """
 
         def _send_asset(filename):
             _folder = os.path.abspath(
-                '%s/%s' % (self.root_path, '../node_modules/element-ui/lib'))
-
-            if filename == 'normalize.css':
-                _folder = os.path.abspath(
-                    '%s/%s' % (self.root_path, '../node_modules/normalize.css'))
-            elif filename.startswith('vue/'):
-                _folder = os.path.abspath(
-                    '%s/%s' % (self.root_path, '../node_modules/vue'))
-                filename =  'dist/' + filename[3:]
-            elif filename.startswith('vue-router/'):
-                _folder = os.path.abspath(
-                    '%s/%s' % (self.root_path, '../node_modules/vue-router'))
-                filename =  'dist/' + filename[10:]
-
+                '%s/%s' % (self.root_path, '../dist'))
             cache_timeout = self.get_send_file_max_age(filename)
             return send_from_directory(
                 _folder,
@@ -52,13 +40,13 @@ class Application(Flask):
             )
 
         app.add_url_rule(
-            '/element-ui/<path:filename>',
-            endpoint='element-ui',
+            '/dist/<path:filename>',
+            endpoint='dist',
             view_func=_send_asset
         )
 
     def ready(self):
         db.init_app(self)
-        self.prepare_element_assets()
+        self.prepare_dist()
 
 app = Application()

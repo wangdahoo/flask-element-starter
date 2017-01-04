@@ -5,8 +5,10 @@ from app import app
 
 @app.route('/favicon.ico')
 def favicon():
-    return send_file('templates/favicon.ico')    
+    return send_file('templates/favicon.ico')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if app.debug:
+        return render_template('index.html')
+    return send_file('../dist/index.html')
