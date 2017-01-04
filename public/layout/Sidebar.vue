@@ -31,7 +31,7 @@
     </el-menu>
   </div>
 </template>
-<style lang="less" scoped>
+<style lang="less">
   .sidebar {
     position: fixed;
     left: 0;

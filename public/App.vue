@@ -5,6 +5,7 @@
 </template>
 <style lang="less">
   @import './less/site.less';
+
   #app {
     width: 100%;
     height: 100%;

@@ -40,7 +40,9 @@
   </div>
 </template>
 <style lang="less">
-  @import '../less/site.less';
+  @import "../less/variables";
+  @import "../less/mixins";
+
   .container {
     .flexbox();
     .flex(1);

@@ -43,8 +43,6 @@
   </div>
 </template>
 <style lang="less" scoped>
-  @import '../less/site.less';
-
   .page-register {
     padding: 80px 0 0 0;
     width: 100%;

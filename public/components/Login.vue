@@ -29,8 +29,6 @@
   </div>
 </template>
 <style lang="less" scoped>
-  @import '../less/site.less';
-
   .page-login {
     padding: 80px 0 0 0;
     width: 100%;

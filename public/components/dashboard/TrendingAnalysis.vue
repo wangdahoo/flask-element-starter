@@ -8,8 +8,6 @@
   </transition>
 </template>
 <style lang="less" scoped>
-  @import "../../less/site";
-
   .title {
     margin: 0 0 15px 0;
   }

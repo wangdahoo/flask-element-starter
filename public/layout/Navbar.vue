@@ -10,8 +10,9 @@
   </div>
 </template>
 
-<style lang="less" scoped>
-  @import '../less/site';
+<style lang="less">
+  @import "../less/variables";
+  @import "../less/mixins";
 
   .navbar {
     .flexbox();
