@@ -4,4 +4,4 @@ run:
 	./ne ./ve python -m scripts.web
 
 dev:
-	./ne npm run dev
+	./ne webpack --watch

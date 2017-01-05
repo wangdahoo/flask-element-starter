@@ -1,4 +1,5 @@
-# Flask Admin Starter
+# Flask Element Starter
+> flask & element-ui
 
 ## Quick Start
 
@@ -15,7 +16,7 @@ $ ./ne yarn install
 $ make run
 ```
 
-- web-dev-server
+- webpack
 ```
 $ make dev
 ```
