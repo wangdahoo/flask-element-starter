@@ -50,3 +50,19 @@ class Application(Flask):
         self.prepare_dist()
 
 app = Application()
+
+app.secret_key = b'\x06\x08\x1eK\xe1\x07\x9f\x06\xd5dlhEW\x18\xb1\x17\xf0\xf0\n\xe6\xf2\xa9z'
+
+# Flask Login
+from flask_login import LoginManager
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"
+login_manager.login_message = "please login first"
+login_manager.login_message_category = "info"
+
+from .services import UserService
+
+@login_manager.user_loader
+def load_user(id):
+    return UserService.get(id)
