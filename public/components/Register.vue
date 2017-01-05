@@ -79,7 +79,7 @@
     password: '',
     confirm: ''
   }
-  
+
   export default {
     components: {
       Navbar
@@ -97,15 +97,15 @@
           username: [
             { required: true, message: '请输入邮箱地址', trigger: 'blur' },
             { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur,change' },
-            { min: 5, max: 50, message: '长度在 50 个字符以内', trigger: 'blur' }
+            { min: 1, max: 50, message: '长度在 50 个字符以内', trigger: 'blur' }
           ],
           password: [
             { required: true, message: '请输入密码', trigger: 'blur' },
-            { min: 5, max: 50, message: '长度在 50 个字符以内', trigger: 'blur' }
+            { min: 1, max: 50, message: '长度在 50 个字符以内', trigger: 'blur' }
           ],
           confirm: [
             { required: true, message: '请再次输入密码', trigger: 'blur' },
-            { min: 5, max: 50, message: '长度在 50 个字符以内', trigger: 'blur' }
+            { min: 1, max: 50, message: '长度在 50 个字符以内', trigger: 'blur' }
           ]
         }
       }

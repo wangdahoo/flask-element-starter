@@ -24,7 +24,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/, 
+        test: /\.css$/,
         loader: 'style-loader!css-loader'
       },
       {
@@ -69,6 +69,7 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.entry = {
     'main': './public/main.js',
     'vue': 'vue',
+    'axios': 'axios',
     'vue-router': 'vue-router',
     'element-ui': 'element-ui'
   };
@@ -84,23 +85,23 @@ if (process.env.NODE_ENV === 'production') {
   var rules = module.exports.module.rules;
 
   rules = _
-    .filter(rules, function (r) { 
-      return !_.isEqual(r.test, /\.css$/) 
+    .filter(rules, function (r) {
+      return !_.isEqual(r.test, /\.css$/)
     })
     .concat([
       {
-        test: /\.css$/, 
+        test: /\.css$/,
         loader: extractCSS.extract('style!css')
       },
       {
-        test: /\.less$/, 
+        test: /\.less$/,
         loader: extractLESS.extract('style!css!less')
       }
     ])
   ;
 
   module.exports.devtool = '#source-map'
-  
+
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
@@ -119,6 +120,7 @@ if (process.env.NODE_ENV === 'production') {
         'element-ui',
         'vue-router',
         'vue',
+        'axios',
         'manifest'
       ]
     }),
@@ -127,7 +129,7 @@ if (process.env.NODE_ENV === 'production') {
       filename: 'index.html',
       template: path.resolve(__dirname, './public/index.html'),
     }),
-    extractCSS, 
+    extractCSS,
     extractLESS,
     new WebpackManifestPlugin({
       fileName: 'app.json'
