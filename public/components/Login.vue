@@ -60,8 +60,8 @@
     data() {
       return {
         form: {
-          username: 'dahoo_wang@qq.com',
-          password: '1234'
+          username: '',
+          password: ''
         },
 
         formRules: {
@@ -83,9 +83,17 @@
         this.$refs.loginForm.validate((valid) => {
           if (!valid) return
 
-          api.post('/login', this.form)
+          api
+            .post('/login', this.form)
             .then((res) => {
-              // console.log(res)
+              this.$message({
+                message: '登录成功！',
+                type: 'success'
+              })
+
+              $router.push({
+                path: '/dashboard/home'
+              })
             })
         })
       }

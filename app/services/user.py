@@ -2,6 +2,7 @@
 
 from app.models import User
 from app import app, db
+from app.views import APIException
 
 class SiteUser():
     user = None
@@ -35,6 +36,19 @@ class UserService():
     def login(username, password):
         user = User.query.filter_by(username=username, password=password).first()
         return (user is not None, SiteUser(user))
+
+    @staticmethod
+    def register(username, password):
+        app.logger.debug('register user: {}, {}'.format(username, password))
+
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            user = User(username, password)
+            db.session.add(user)
+            db.session.commit()
+            app.logger.debug('register user ok')
+        else:
+            raise APIException(message=('username %s already exists' % username))
 
     @staticmethod
     def create_admin():

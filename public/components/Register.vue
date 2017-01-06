@@ -72,6 +72,7 @@
 </style>
 <script>
   import _ from 'lodash'
+  import api from '../common/api'
   import Navbar from '../layout/Navbar.vue'
 
   const formDefault = {
@@ -115,6 +116,19 @@
       onSubmit() {
         this.$refs.registerForm.validate((valid) => {
           if (!valid) return
+
+          api
+            .post('/register', this.form)
+            .then((res) => {
+              this.$message({
+                message: '注册成功！请登录',
+                type: 'success'
+              })
+
+              $router.push({
+                path: '/login'
+              })
+            })
 
         })
       },

@@ -17,11 +17,11 @@
                 </el-badge>
               </el-menu-item>
 
-              <el-submenu index="3">
+              <el-submenu index="2">
                 <template slot="title">
                   <span class="username" v-text="username"></span>
                 </template>
-                <el-menu-item index="3-1">
+                <el-menu-item index="2-1">
                   <i class="icon ion-android-person"></i> Logout
                 </el-menu-item>
               </el-submenu>
@@ -69,7 +69,7 @@
       }
     }
 
-    
+
 
     .dashboard {
       padding: 60px 0 0 200px;
@@ -85,6 +85,7 @@
 <script>
   import Navbar from './Navbar.vue'
   import Sidebar from './Sidebar.vue'
+  import api from '../common/api'
 
   export default {
     components: {
@@ -101,6 +102,16 @@
     methods: {
       userActionSelect(key, keyPath) {
         console.log(key, keyPath)
+
+        if (key == '2-1') { // logout
+          api.post('/logout').then(() => {
+            this.$message({
+              message: '已登出',
+              type: 'warning'
+            })
+            $router.replace({ path: '/login' })
+          })
+        }
       }
     }
   }

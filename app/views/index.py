@@ -12,3 +12,4 @@ def index():
     if app.debug:
         return render_template('index.html')
     return send_file('../dist/index.html')
+

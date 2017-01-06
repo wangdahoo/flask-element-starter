@@ -17,8 +17,9 @@ def make_api_response(payload=None, message=None, statusCode=200):
     # status code and message
     if statusCode != 200:
         body['status'] = 'fail'
-        if message:
-            body['message'] = message
+
+    if message:
+        body['message'] = message
 
     # payload
     if payload:

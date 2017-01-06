@@ -31,3 +31,20 @@ def login():
 def logout():
     logout_user()
     return make_api_response()
+
+
+@app.route('/api/register', methods=['POST'])
+def register():
+    username = request.form['username']
+    password = request.form['password']
+    confirm = request.form['confirm']
+
+    if not username or not password:
+        return make_api_response(message='参数错误：缺少用户名或密码', statusCode=400)
+
+    if confirm != password:
+        return make_api_response(message='参数错误：两次输入密码不一致', statusCode=400)
+
+    UserService.register(username=username, password=password)
+
+    return make_api_response(message='注册成功')
