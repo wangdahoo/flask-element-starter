@@ -1,4 +1,4 @@
-# Flask Element Starter <img src="https://img.shields.io/badge/status-developing.svg">
+# Flask Element Starter <img src="https://img.shields.io/badge/status-%20in%20development%20-green.svg">
 > flask & element-ui
 
 ## Quick Start
