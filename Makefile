@@ -1,7 +1,7 @@
-default: run
+default: web
 
-run:
+web:
 	./ne ./ve python -m scripts.web
 
-dev:
+fe:
 	./ne webpack --watch

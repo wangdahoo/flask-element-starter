@@ -3,14 +3,13 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var WebpackManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: './public/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './app/templates/dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: '[name].dev.js'
   },
   module: {
     rules: [
@@ -52,13 +51,21 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Flask Element Starter',
+      filename: 'index.html',
+      template: './app/templates/index.tpl.html',
+      inject: 'body'
+    })
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
   // Clean dist
   var exec = require('child_process').exec;
-  exec('rm -rf dist/**', (err, stdout, stderr) => {
+  exec('rm -rf app/templates/dist/**', (err, stdout, stderr) => {
     if (err) {
       console.error(err);
       return;
@@ -124,15 +131,7 @@ if (process.env.NODE_ENV === 'production') {
         'manifest'
       ]
     }),
-    new HtmlWebpackPlugin({
-      title: 'Flask Element Starter',
-      filename: 'index.html',
-      template: path.resolve(__dirname, './public/index.html'),
-    }),
     extractCSS,
-    extractLESS,
-    new WebpackManifestPlugin({
-      fileName: 'app.json'
-    })
+    extractLESS
   ])
 }

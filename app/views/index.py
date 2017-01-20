@@ -8,8 +8,8 @@ def favicon():
     return send_file('templates/favicon.ico')
 
 @app.route('/')
-def index():
+@app.route('/<path:path>')
+def index(path=''):
     if app.debug:
-        return render_template('index.html')
+        return render_template('index.tpl.html', env='DEV')
     return send_file('../dist/index.html')
-

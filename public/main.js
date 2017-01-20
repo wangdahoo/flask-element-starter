@@ -39,10 +39,16 @@ const routes = [
       { path: 'trending/analysis', component: TrendingAnalysis },
       { path: 'settings', component: Settings }
     ]
+  },
+
+  {
+    path: '*',
+    redirect: '/dashboard/home'
   }
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 

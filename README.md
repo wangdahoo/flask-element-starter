@@ -13,12 +13,12 @@ $ ./ne yarn install
 #### Run up for development
 - python
 ```
-$ make run
+$ make web
 ```
 
-- webpack
+- front end
 ```
-$ make dev
+$ make fe
 ```
 
 > visit [http://127.0.0.1:5000](http://127.0.0.1:5000) for website.

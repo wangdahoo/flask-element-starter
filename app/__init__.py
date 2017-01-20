@@ -31,7 +31,7 @@ class Application(Flask):
 
         def _send_asset(filename):
             _folder = os.path.abspath(
-                '%s/%s' % (self.root_path, '../dist'))
+                '%s/%s' % (self.root_path, './templates/dist'))
             cache_timeout = self.get_send_file_max_age(filename)
             return send_from_directory(
                 _folder,
