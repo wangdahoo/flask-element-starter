@@ -1,4 +1,4 @@
-# Flask Element Starter <img src="https://img.shields.io/badge/status-%20in%20development%20-green.svg">
+# Flask Element Starter
 > flask & element-ui
 
 ## Quick Start
@@ -22,3 +22,10 @@ $ make fe
 ```
 
 > visit [http://127.0.0.1:5000](http://127.0.0.1:5000) for website.
+
+
+#### Run up for production
+```
+$ make prd
+```
+

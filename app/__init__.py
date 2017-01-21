@@ -18,7 +18,7 @@ class Application(Flask):
         import os
         # 生产环境配置
         if 'APP_CONFIG' in os.environ:
-            self.config.from_envvar('APP_CONFIG', silent=True)
+            self.config.from_envvar('APP_CONFIG', silent=False)
         else:
             dev_cfg = os.path.abspath(os.path.join(
                 os.path.basename(__file__), '../dev.cfg'))

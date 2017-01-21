@@ -55,7 +55,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Flask Element Starter',
-      filename: 'index.html',
+      filename: process.env.NODE_ENV === 'production' ? 'index.html' : 'index.dev.html',
       template: './app/templates/index.tpl.html',
       inject: 'body'
     })

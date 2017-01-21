@@ -10,6 +10,7 @@ def favicon():
 @app.route('/')
 @app.route('/<path:path>')
 def index(path=''):
-    if app.debug:
-        return render_template('index.tpl.html', env='DEV')
-    return send_file('../dist/index.html')
+    print(app.config.get('FE_ENV'))
+    if app.config.get('FE_ENV') == 'production':
+        return render_template('dist/index.html', env='PRD')
+    return render_template('dist/index.dev.html', env='DEV')
